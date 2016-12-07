@@ -8,7 +8,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -100,7 +99,7 @@ public class Game extends Canvas implements Runnable{
 		tickCount++;
 		
 		for(int i = 0; i < pixels.length; i++){
-			pixels[i] = i + tickCount;;
+			pixels[i] = i * tickCount;
 		}
 	}
 	
