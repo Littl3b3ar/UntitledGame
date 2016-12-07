@@ -9,6 +9,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable{
@@ -31,7 +32,8 @@ public class Game extends Canvas implements Runnable{
 	
 	public Game(){
 		frame = new JFrame(TITLE);
-		
+		ImageIcon titleIcon = new ImageIcon("./assets/icon/icon.png");
+		frame.setIconImage(titleIcon.getImage());
 		frame.setMinimumSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
@@ -121,7 +123,5 @@ public class Game extends Canvas implements Runnable{
 	public static void main(String[] args) {
 		new Game().start();
 	}
-
-	
 
 }
