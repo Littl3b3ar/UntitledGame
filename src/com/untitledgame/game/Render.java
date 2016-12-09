@@ -23,11 +23,14 @@ public class Render extends Canvas implements Runnable{
 	public static int BUFFER_SIZE = 3; //How many times the render is buffered
 	private JFrame frame;
 	
+	public int color = 0xffffff;
 	public boolean running = false;
 	public int tickCount = 0;
 	
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
+	
+	public InputHandler input;
 	
 	public Render(){
 		frame = new JFrame(TITLE);
@@ -41,6 +44,8 @@ public class Render extends Canvas implements Runnable{
 		frame.setLocationRelativeTo(null);
 		frame.pack();
 		frame.setVisible(true);
+		
+		input = new InputHandler(this);
 	}
 	
 	public synchronized void start() {
@@ -98,9 +103,23 @@ public class Render extends Canvas implements Runnable{
 	public void tick(){
 		tickCount++;
 		
+		/*
+		 * This next line is just for testing drawing images
+		 * In this case the array of pixels is 480000 in length
+		 * which is 800 x 600 each pixel can take the color code
+		 * pressing WASD + space will change the color.
+		 * You need to click to window first to ?focus it?
+		 */
+	    
 		for(int i = 0; i < pixels.length; i++){
-			pixels[i] = i * tickCount;
+			pixels[i] = color;
 		}
+		
+		if (input.upKey.isPressed()){color = 0x9B59B6;}
+		if (input.downKey.isPressed()){color = 0xF4D03F;}
+		if (input.leftKey.isPressed()){color = 0x52BE80;}
+		if (input.rightKey.isPressed()){color = 0x99A3A4;}
+		if (input.spaceKey.isPressed()){color = 0xffffff;}
 	}
 	
 	public void render(){
