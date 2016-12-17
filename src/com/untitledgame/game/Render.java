@@ -27,6 +27,16 @@ public class Render extends Canvas implements Runnable{
 	public boolean running = false;
 	public int tickCount = 0;
 	
+	//stage
+	public int backgroundColor = 0x9B59B6;
+	
+	//Test Object
+	public int squareXLoc = 400;
+	public int squareYLoc = 300;
+	public int squareHeight = 100;
+	public int squareLength = 100;
+	public int squareColor = 0xE8EB2B;
+	
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 	
@@ -110,16 +120,26 @@ public class Render extends Canvas implements Runnable{
 		 * pressing WASD + space will change the color.
 		 * You need to click to window first to ?focus it?
 		 */
-	    
-		for(int i = 0; i < pixels.length; i++){
-			pixels[i] = color;
+	   	
+		for(int i = 0; i < 600; i++){
+			for(int j = 0; j < 800; j++){
+				if(((i >= squareYLoc) && (i <= (squareYLoc + squareHeight))) &&
+				   ((j >= squareXLoc) && (j <= (squareXLoc + squareLength)))){
+					pixels[800*i+j] = squareColor;
+				}else{
+					pixels[800*i+j] = backgroundColor;
+				}
+			}
 		}
 		
-		if (input.upKey.isPressed()){color = 0x9B59B6;}
-		if (input.downKey.isPressed()){color = 0xF4D03F;}
-		if (input.leftKey.isPressed()){color = 0x52BE80;}
-		if (input.rightKey.isPressed()){color = 0x99A3A4;}
-		if (input.spaceKey.isPressed()){color = 0xffffff;}
+		if (input.upKey.isPressed()){squareYLoc-=2;}
+		if (input.downKey.isPressed()){squareYLoc+=2;}
+		if (input.leftKey.isPressed()){squareXLoc-=2;}
+		if (input.rightKey.isPressed()){squareXLoc+=2;}
+		if (input.spaceKey.isPressed()){
+			squareXLoc = 400;
+			squareYLoc = 300;
+		}
 	}
 	
 	public void render(){
