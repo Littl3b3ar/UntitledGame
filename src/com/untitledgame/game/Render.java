@@ -54,6 +54,7 @@ public class Render extends Canvas implements Runnable{
 		frame.setLocationRelativeTo(null);
 		frame.pack();
 		frame.setVisible(true);
+		frame.setAlwaysOnTop(true);
 		
 		input = new InputHandler(this);
 	}
@@ -121,6 +122,11 @@ public class Render extends Canvas implements Runnable{
 		 * You need to click to window first to ?focus it?
 		 */
 	   	
+		/*TODO: -i needs to be x and j needs to be y
+		 *      -remove hard coded pixel lengths
+		 *      -see repository for more
+		 */
+		
 		for(int i = 0; i < 600; i++){
 			for(int j = 0; j < 800; j++){
 				if(((i >= squareYLoc) && (i <= (squareYLoc + squareHeight))) &&
