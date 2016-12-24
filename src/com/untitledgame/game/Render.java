@@ -55,7 +55,6 @@ public class Render extends Canvas implements Runnable{
 		frame.pack();
 		frame.setVisible(true);
 		frame.setAlwaysOnTop(true);
-		
 		input = new InputHandler(this);
 	}
 	
