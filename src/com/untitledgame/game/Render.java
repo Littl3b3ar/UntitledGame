@@ -18,10 +18,10 @@ public class Render extends Canvas implements Runnable{
 
 	private static final long serialVersionUID = 1L;
 
-	public static final int WIDTH = 800;
-	public static final int HEIGHT = 600;
-	public static final int SCALE = 1;
-	public static final String TITLE = "Untitled Game";
+	public static final int DISPLAYWIDTH = 1024;
+	public static final int DISPLAYHEIGHT = 768;
+	public static final int DISPLAYSCALE = 1;
+	public static final String FRAMETITLE = "Untitled Game";
 	public static boolean FRAME_LIMIT = true; //Limit FPS to 60
 	public static int BUFFER_SIZE = 3; //How many times the render is buffered
 	private JFrame frame;
@@ -42,16 +42,16 @@ public class Render extends Canvas implements Runnable{
 	
 	public int square2object[][] = new int[100][100];
 	
-	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+	private BufferedImage image = new BufferedImage(DISPLAYWIDTH, DISPLAYHEIGHT, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 	
 	public InputHandler input;
 	
 	public Render(){
-		frame = new JFrame(TITLE);
+		frame = new JFrame(FRAMETITLE);
 		ImageIcon titleIcon = new ImageIcon("./assets/icon/icon.png");
 		frame.setIconImage(titleIcon.getImage());
-		frame.setMinimumSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
+		frame.setMinimumSize(new Dimension(DISPLAYWIDTH*DISPLAYSCALE, DISPLAYHEIGHT*DISPLAYSCALE));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 		frame.add(this, BorderLayout.CENTER);
@@ -60,6 +60,7 @@ public class Render extends Canvas implements Runnable{
 		frame.pack();
 		frame.setVisible(true);
 		frame.setAlwaysOnTop(true);
+		
 		input = new InputHandler(this);
 	}
 	
@@ -131,13 +132,13 @@ public class Render extends Canvas implements Runnable{
 		 *      -see repository for more
 		 */
 		
-		for(int i = 0; i < 600; i++){
-			for(int j = 0; j < 800; j++){
+		for(int i = 0; i < DISPLAYHEIGHT; i++){
+			for(int j = 0; j < DISPLAYWIDTH; j++){
 				if(((i >= squareYLoc) && (i <= (squareYLoc + squareHeight))) &&
 				   ((j >= squareXLoc) && (j <= (squareXLoc + squareLength)))){
-					pixels[800*i+j] = squareColor;
+					pixels[DISPLAYWIDTH*i+j] = squareColor;
 				}else{
-					pixels[800*i+j] = backgroundColor;
+					pixels[DISPLAYWIDTH*i+j] = backgroundColor;
 				}
 			}
 		}
