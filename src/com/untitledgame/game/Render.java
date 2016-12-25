@@ -1,4 +1,7 @@
 package com.untitledgame.game;
+/*
+ * The rendering class is a thread
+ */
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
@@ -36,6 +39,8 @@ public class Render extends Canvas implements Runnable{
 	public int squareHeight = 100;
 	public int squareLength = 100;
 	public int squareColor = 0xE8EB2B;
+	
+	public int square2object[][] = new int[100][100];
 	
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
@@ -137,6 +142,7 @@ public class Render extends Canvas implements Runnable{
 			}
 		}
 		
+		
 		if (input.upKey.isPressed()){squareYLoc-=2;}
 		if (input.downKey.isPressed()){squareYLoc+=2;}
 		if (input.leftKey.isPressed()){squareXLoc-=2;}
@@ -145,6 +151,10 @@ public class Render extends Canvas implements Runnable{
 			squareXLoc = 400;
 			squareYLoc = 300;
 		}
+	}
+	
+	public void drawEntity(int entity[][]){
+		
 	}
 	
 	public void render(){

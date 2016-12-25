@@ -10,6 +10,8 @@ public class Entity{
 	 *it write to the render
 	 */
 	
+	private boolean entityVisible = false;
+	
 	// Coordinates of the entity
 	private int entityXLoc, entityYLoc, entityZPri;
 	private int entityLength, entityHeight;
@@ -18,6 +20,14 @@ public class Entity{
 	
 	public Entity (int x,int y,int zPriority,int entityCode){
 		
+	}
+	
+	public void setEntityVisibility(boolean entityVisibility){
+		this.entityVisible = entityVisibility;
+	}
+	
+	public boolean getEntityVisibility(){
+		return this.entityVisible;
 	}
 	
 	public int getEntityXLoc( )
