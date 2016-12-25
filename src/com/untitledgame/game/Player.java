@@ -4,7 +4,7 @@ public class Player {
 	
 	//Player visibility to the renderer
 	private boolean playerVisible = false;
-	
+	private boolean playerColliding = false;
 	// Coordinates of the player
 	private int playerXLoc, playerYLoc, playerZPri;
 	private int playerLength, playerHeight;
@@ -20,6 +20,14 @@ public class Player {
 	
 	public boolean getPlayerVisibility(){
 		return this.playerVisible;
+	}
+	
+	public void setPlayerColliding(boolean playerCollide){
+		this.playerColliding = playerCollide;
+	}
+	
+	public boolean getPlayerColliding(){
+		return this.playerColliding;
 	}
 	
 	public int getPlayerXLoc( )

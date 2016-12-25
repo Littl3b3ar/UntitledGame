@@ -11,6 +11,7 @@ public class Entity{
 	 */
 	
 	private boolean entityVisible = false;
+	private boolean entityColliding = false;
 	
 	// Coordinates of the entity
 	private int entityXLoc, entityYLoc, entityZPri;
@@ -28,6 +29,14 @@ public class Entity{
 	
 	public boolean getEntityVisibility(){
 		return this.entityVisible;
+	}
+	
+	public void setEntityColliding(boolean entityCollide){
+		this.entityColliding = entityCollide;
+	}
+	
+	public boolean getEntityColliding(){
+		return this.entityColliding;
 	}
 	
 	public int getEntityXLoc( )
