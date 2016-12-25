@@ -1,10 +1,11 @@
 package com.untitledgame.game;
 
-public class Player {
+public class Player extends Physics{
 	
-	//Player visibility to the renderer
+	//Player properties
 	private boolean playerVisible = false;
 	private boolean playerColliding = false;
+	
 	// Coordinates of the player
 	private int playerXLoc, playerYLoc, playerZPri;
 	private int playerLength, playerHeight;
@@ -90,6 +91,10 @@ public class Player {
 		this.playerFilePath = newPlayerFilePath;
 	}
 
+	private void updatePlayer(){
+		//TODO: Write code to update the player draw on the gameboard array
+	}
+	
 	protected void finalize(){
 		
 	}

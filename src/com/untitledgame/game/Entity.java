@@ -1,17 +1,22 @@
 package com.untitledgame.game;
 
-public class Entity{
+public class Entity extends Physics{
+	
 	/*
-	 * when a new entity is created it need a xy, a z (draw priority)
-	 * an entity code (entity code)
-	 * 
-	 *set xyz, get xyz
-	 *
-	 *it write to the render
+	 * TODO:
+	 * -make entity a thread
+	 * -this thread needs to be syncronized with the game tick
+	 * -the entity will apply physics to itself
+	 * -the entity will draw itself onto a gameboard array
+	 * -the gameboard array will be selectivly rendered by the renderer depending
+	 *  upon which elements are in view
+	 *  
 	 */
 	
+	//Entity Properties
 	private boolean entityVisible = false;
 	private boolean entityColliding = false;
+	private boolean fixedEntity = false;
 	
 	// Coordinates of the entity
 	private int entityXLoc, entityYLoc, entityZPri;
@@ -37,6 +42,18 @@ public class Entity{
 	
 	public boolean getEntityColliding(){
 		return this.entityColliding;
+	}
+	
+	/*
+	 * A fixed entity will ignore the effects of gravity
+	 * but will still inherent other physics attributes
+	 */
+	public void setEntityFixed(boolean entityFixed){
+		this.fixedEntity = entityFixed;
+	}
+	
+	public boolean getEntityFixed(){
+		return this.fixedEntity;
 	}
 	
 	public int getEntityXLoc( )
@@ -107,6 +124,10 @@ public class Entity{
 	public void setEntityNum(int newEntityNum)
 	{
 		this.entityNum = newEntityNum;
+	}
+	
+	private void updateEntity(){
+		//TODO: Write code that updates the entity draw on the gameboard array
 	}
 	
 	protected void finalize(){

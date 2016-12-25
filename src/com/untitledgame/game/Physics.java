@@ -2,7 +2,7 @@ package com.untitledgame.game;
 
 public class Physics {
 
-	private final double gravityConst = -9.8;
+	private final double gravityConst = 9.8;
 	
 	public Physics(){
 		
