@@ -99,4 +99,8 @@ public class Entity{
 	{
 		this.entityNum = newEntityNum;
 	}
+	
+	protected void finalize(){
+		
+	}
 }

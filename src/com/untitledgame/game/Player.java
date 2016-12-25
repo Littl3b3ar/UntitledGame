@@ -82,4 +82,8 @@ public class Player {
 		this.playerFilePath = newPlayerFilePath;
 	}
 
+	protected void finalize(){
+		
+	}
+	
 }
