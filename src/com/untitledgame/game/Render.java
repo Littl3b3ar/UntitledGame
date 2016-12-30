@@ -113,7 +113,6 @@ public class Render extends Canvas implements Runnable{
 			}
 			
 		}
-		
 	}
 	
 	public void tick(){
