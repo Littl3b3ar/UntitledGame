@@ -1,18 +1,7 @@
 package com.untitledgame.game;
 
-public class Entity extends Physics implements Runnable{
-	
-	/*
-	 * TODO:
-	 * 
-	 * -this thread needs to be syncronized with the game tick
-	 * -the entity will apply physics to itself DONE
-	 * -the entity will draw itself onto a gameboard array
-	 * -the gameboard array will be selectivly rendered by the renderer depending
-	 *  upon which elements are in view
-	 *  
-	 */
-	
+public class Entity extends Physics{
+		
 	//Entity Properties
 	private boolean entityVisible = false;
 	private boolean entityColliding = false;
@@ -124,10 +113,6 @@ public class Entity extends Physics implements Runnable{
 	public void setEntityNum(int newEntityNum)
 	{
 		this.entityNum = newEntityNum;
-	}
-	
-	public void run(){
-		
 	}
 	
 	private void updateEntity(){

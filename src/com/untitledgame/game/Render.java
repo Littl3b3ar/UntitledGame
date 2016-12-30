@@ -33,18 +33,11 @@ public class Render extends Canvas implements Runnable{
 	//stage
 	public int backgroundColor = 0x9B59B6;
 	
-	//Test Object
-	public int squareXLoc = 400;
-	public int squareYLoc = 300;
-	public int squareHeight = 100;
-	public int squareLength = 100;
-	public int squareColor = 0xE8EB2B;
-	
 	public int square2object[][] = new int[100][100];
 	
 	private BufferedImage image = new BufferedImage(DISPLAYWIDTH, DISPLAYHEIGHT, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
-	
+	private int gamePixels[][] = new int[DISPLAYWIDTH][DISPLAYHEIGHT];
 	public InputHandler input;
 	
 	public Render(){
@@ -118,42 +111,27 @@ public class Render extends Canvas implements Runnable{
 	public void tick(){
 		tickCount++;
 		
-		/*
-		 * This next line is just for testing drawing images
-		 * In this case the array of pixels is 480000 in length
-		 * which is 800 x 600 each pixel can take the color code
-		 * pressing WASD + space will change the color.
-		 * You need to click to window first to ?focus it?
-		 */
-	   	
-		/*TODO: -i needs to be x and j needs to be y
-		 *      -remove hard coded pixel lengths
-		 *      -see repository for more
-		 */
-		
-		for(int i = 0; i < DISPLAYHEIGHT; i++){
-			for(int j = 0; j < DISPLAYWIDTH; j++){
-				if(((i >= squareYLoc) && (i <= (squareYLoc + squareHeight))) &&
-				   ((j >= squareXLoc) && (j <= (squareXLoc + squareLength)))){
-					pixels[DISPLAYWIDTH*i+j] = squareColor;
-				}else{
-					pixels[DISPLAYWIDTH*i+j] = backgroundColor;
-				}
+		for(int i = 0; i < DISPLAYWIDTH; i++){
+			for(int j = 0; j < DISPLAYHEIGHT; j++){
+				pixels[i + DISPLAYWIDTH*j] = backgroundColor;
 			}
 		}
-		
-		
-		if (input.upKey.isPressed()){squareYLoc-=2;}
-		if (input.downKey.isPressed()){squareYLoc+=2;}
-		if (input.leftKey.isPressed()){squareXLoc-=2;}
-		if (input.rightKey.isPressed()){squareXLoc+=2;}
-		if (input.spaceKey.isPressed()){
-			squareXLoc = 400;
-			squareYLoc = 300;
+		for(int i = 0; i < DISPLAYWIDTH; i++){
+			for(int j = 0; j < DISPLAYHEIGHT; j++){
+				pixels[i + DISPLAYWIDTH*j] = gamePixels[i][j];
+			}
 		}
 	}
 	
-	public void drawEntity(int entity[][]){
+	public void drawEntity(int entity[][], int entityXLoc, int entityYLoc, int entityLength, int entityHeight){
+		
+		int tempEntity[][] = entity;
+		
+		for(int i = 0; i < entityLength; i++){
+			for(int j = 0; j < entityHeight; j++){
+				gamePixels[entityXLoc + i][entityYLoc + j] = tempEntity[i][j];
+			}
+		}
 		
 	}
 	
