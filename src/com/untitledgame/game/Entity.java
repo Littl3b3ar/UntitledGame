@@ -1,6 +1,6 @@
 package com.untitledgame.game;
 
-public class Entity extends Physics implements Runnable{
+public class Entity extends Physics{
 	
 	/*
 	 * TODO:
