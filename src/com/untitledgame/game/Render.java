@@ -129,7 +129,7 @@ public class Render extends Canvas implements Runnable{
 		
 		for(int i = 0; i < entityLength; i++){
 			for(int j = 0; j < entityHeight; j++){
-				gamePixels[entityXLoc + i][entityYLoc + j] = tempEntity[i][j];
+				gamePixels[entityXLoc + i][entityYLoc + j] = entity[i][j];
 			}
 		}
 		
