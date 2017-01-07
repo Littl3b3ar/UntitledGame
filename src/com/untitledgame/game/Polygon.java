@@ -1,6 +1,6 @@
 package com.untitledgame.game;
 
-public class Polygon {
+public class Polygon extends Entity{
 	
 	private int numOfVertices;
 	private int numOfEdges;
@@ -19,8 +19,22 @@ public class Polygon {
 	
 	public Polygon(String shape)
 	{
+		super();
+		
 		this.shape = shape;
 		
+		switch(this.shape)
+		{
+			case "Square":
+			{
+				this.numOfVertices = 4;
+				this.numOfEdges = 4;
+			}
+			case "Triangle":
+			{
+				
+			}
+		}
 		if (shape == "Square")
 		{
 			this.numOfVertices = 4;

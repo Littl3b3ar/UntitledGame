@@ -1,6 +1,6 @@
 package com.untitledgame.game;
 
-public class Entity extends Physics{
+public class Entity {
 	
 	/*
 	 * TODO:
@@ -23,6 +23,12 @@ public class Entity extends Physics{
 	private int entityLength, entityHeight;
 	private int entityNum;
 	private String entityFilePath;
+	
+	//Default constructor
+	public Entity()
+	{
+		
+	}
 	
 	public Entity (int x,int y,int zPriority,int entityCode){
 		
@@ -126,15 +132,8 @@ public class Entity extends Physics{
 		this.entityNum = newEntityNum;
 	}
 	
-	public void run(){
-		
-	}
-	
 	private void updateEntity(){
 		
 	}
 	
-	protected void finalize(){
-		
-	}
 }

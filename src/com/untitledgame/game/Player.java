@@ -7,9 +7,5 @@ public class Player extends Entity{
 		super(x, y, zPriority, entityCode);
 		// TODO Auto-generated constructor stub
 	}
-
-	protected void finalize(){
-		
-	}
 	
 }
